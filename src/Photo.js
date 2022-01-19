@@ -6,7 +6,7 @@ const Photo = ({
   user: {
     name,
     portfolio_url,
-    profile_image: { medium }, 
+    profile_image: { medium },
 
   },
 }) => {

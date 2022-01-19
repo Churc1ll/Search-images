@@ -16,25 +16,24 @@ function App() {
     let url;
     const urlPage = `&page=${page}`;
     const urlQuery = `&query=${query}`;
-    
+
     if (query) {
       url = `${searchUrl}${clientID}${urlPage}${urlQuery}`;
     } else {
       url = `${mainUrl}${clientID}${urlPage}`;
     }
-    
+
     try {
       setLoading(true);
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
 
       if (query && page === 1) {
         setPhotos(data.results);
       } else {
-      query ? setPhotos(photos.concat(data.results)) :
-      setPhotos((oldPhotos) => {return [...oldPhotos, ...data]}) ;
-      setLoading(false);
+        query ? setPhotos(photos.concat(data.results)) :
+          setPhotos((oldPhotos) => { return [...oldPhotos, ...data] });
+        setLoading(false);
       }
     } catch (error) {
       setLoading(false);
